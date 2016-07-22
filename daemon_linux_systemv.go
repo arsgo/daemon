@@ -231,8 +231,8 @@ servname="{{.Description}}"
 proc="{{.Name}}"
 pidfile="/var/run/$proc.pid"
 lockfile="/var/lock/subsys/$proc"
-stdoutlog="/var/log/$proc.log"
-stderrlog="/var/log/$proc.err"
+stdoutlog="{{.Path}}/$proc.log"
+stderrlog="{{.Path}}/$proc.err"
 
 [[ -d $(dirname $lockfile) ]] || mkdir -p $(dirname $lockfile)
 

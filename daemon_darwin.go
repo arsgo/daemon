@@ -42,6 +42,7 @@ func (darwin *darwinRecord) isInstalled() bool {
 
 // Get executable path
 func execPath() (string, error) {
+	//return os.Getwd()
 	return filepath.Abs(os.Args[0])
 }
 
