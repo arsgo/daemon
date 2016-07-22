@@ -7,6 +7,7 @@ package daemon
 
 import (
 	"os"
+	"strings"
 )
 
 // Get the daemon properly
@@ -21,3 +22,4 @@ func newDaemon(name, description string, dependencies []string) (Daemon, error) 
 func execPath() (string, error) {
 	return os.Readlink("/proc/self/exe")
 }
+

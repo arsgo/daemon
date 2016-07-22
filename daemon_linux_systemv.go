@@ -83,8 +83,8 @@ func (linux *systemVRecord) Install() (string, error) {
 	if err := templ.Execute(
 		file,
 		&struct {
-			Name, Description, Path, Root string
-		}{linux.name, linux.description, execPatch, "/home/golang/logs"},
+			Name, Description, Path string
+		}{linux.name, linux.description, execPatch},
 	); err != nil {
 		return installAction + failed, err
 	}
@@ -231,8 +231,8 @@ servname="{{.Description}}"
 proc="{{.Name}}"
 pidfile="/var/run/$proc.pid"
 lockfile="/var/lock/subsys/$proc"
-stdoutlog="{{.Root}}/$proc.log"
-stderrlog="{{.Root}}/$proc.err"
+stdoutlog="{{.Path}}.log"
+stderrlog="{{.Path}}.err"
 
 [[ -d $(dirname $lockfile) ]] || mkdir -p $(dirname $lockfile)
 
