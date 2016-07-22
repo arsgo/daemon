@@ -5,10 +5,7 @@
 // Package daemon linux version
 package daemon
 
-import (
-	"os"
-	"strings"
-)
+import "os"
 
 // Get the daemon properly
 func newDaemon(name, description string, dependencies []string) (Daemon, error) {
@@ -22,4 +19,3 @@ func newDaemon(name, description string, dependencies []string) (Daemon, error) 
 func execPath() (string, error) {
 	return os.Readlink("/proc/self/exe")
 }
-
