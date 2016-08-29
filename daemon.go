@@ -172,6 +172,9 @@ type Daemon interface {
 	// Stop the service
 	Stop() (string, error)
 
+	// Stop the service
+	Clear() (string, error)
+
 	// Status - check the service status
 	Status() (string, error)
 }

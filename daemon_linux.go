@@ -19,3 +19,4 @@ func newDaemon(name, description string, dependencies []string) (Daemon, error) 
 func execPath() (string, error) {
 	return os.Readlink("/proc/self/exe")
 }
+

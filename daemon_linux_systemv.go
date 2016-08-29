@@ -5,6 +5,7 @@
 package daemon
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"regexp"
@@ -21,6 +22,16 @@ type systemVRecord struct {
 // Standard service path for systemV daemons
 func (linux *systemVRecord) servicePath() string {
 	return "/etc/init.d/" + linux.name
+}
+func (linux *systemVRecord) Clear() (s string, err error) {
+	path := fmt.Sprintf("/var/run/%s.pid", linux.name)
+	err = os.Remove(path)
+	if err != nil {
+		return
+	}
+	s = "delete:" + path + success
+	return
+
 }
 
 // Is a service installed

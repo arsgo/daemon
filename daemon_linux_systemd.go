@@ -5,6 +5,7 @@
 package daemon
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"regexp"
@@ -22,6 +23,16 @@ type systemDRecord struct {
 // Standard service path for systemD daemons
 func (linux *systemDRecord) servicePath() string {
 	return "/etc/systemd/system/" + linux.name + ".service"
+}
+func (linux *systemDRecord) Clear() (s string, err error) {
+	path := fmt.Sprintf("/var/run/%s.pid", linux.name)
+	err = os.Remove(path)
+	if err != nil {
+		return
+	}
+	s = "delete:" + path + success
+	return
+
 }
 
 // Is a service installed

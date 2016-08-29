@@ -185,6 +185,16 @@ func (darwin *darwinRecord) Status() (string, error) {
 
 	return statusAction, nil
 }
+func (darwin *darwinRecord) Clear() (s string, err error) {
+	path := linux.servicePath()
+	err = os.Remove(path)
+	if err != nil {
+		return
+	}
+	s = "delete:" + path + success
+	return
+
+}
 
 var propertyList = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
