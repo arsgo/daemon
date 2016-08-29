@@ -61,3 +61,6 @@ func (windows *windowsRecord) Status() (string, error) {
 func execPath() (string, error) {
 	return "", ErrWindowsUnsupported
 }
+func (windows *windowsRecord) Clear() (s string, err error) {
+
+}
